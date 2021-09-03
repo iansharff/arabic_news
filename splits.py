@@ -1,10 +1,22 @@
+# -*- coding: utf-8 -*-
+
 import os
+import requests
 import pickle
 import pandas as pd
 
-ROOT_PATH = 'data'
+import nltk
+from nltk.tokenize.regexp import RegexpTokenizer
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+
+
+ROOT_PATH = 'raw_data'
 TRAIN_SPLIT = 0.8
 SEED = 42
+PATTERN = r'[\u0621-\u064A]+'
+STOPWORDS_URL = 'https://raw.githubusercontent.com/mohataher/arabic-stop-words/master/list.txt'
 
 def main():
     print('-'*50)
@@ -44,9 +56,30 @@ def main():
     print(*[f"{dname}: {len(fnames)}" for dname, fnames in cls_dict.items()], sep='\n\t')
     
     corpus_df = pd.DataFrame(corpus).set_index('id')
-    with open('corpus_df.pkl', 'wb') as f:
-        pickle.dump(corpus_df, f)
+    save(corpus_df, 'corpus_df.pkl')
 
+    
+def vectorize(df, vectorizer=None, max_features=10_000):
+    """Vectorize a dataframe for storage in sparse matrix form"""
+    vectorizer = CountVectorizer(
+        lowercase=False,
+        stop_words=get_stopwords(),
+        max_features=max_features
+    ) if vectorizer is not None else vectorizer
+
+
+def get_stopwords(url = STOPWORDS_URL):
+    r = requests.get(STOPWORDS_URL)
+    stopwords = []
+    if r.status_code:
+        stopwords = r.text.split('\n')
+    else:
+        stopwords = nltk.corpus.stopwords.words('arabic')
+    return stopwords
+
+def save(obj, filepath):
+    with open(filepath, 'wb') as f:
+        pickle.dump(obj, f)
 
 if __name__ == '__main__':
     main()
