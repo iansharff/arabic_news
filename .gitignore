@@ -1,0 +1,12 @@
+# Jupyter Lab
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Scratch files
+scratch*.ipynb
+scratch*.py
+
+# Data / Large files
+raw_data/
