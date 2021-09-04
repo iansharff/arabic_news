@@ -58,16 +58,6 @@ def main():
     corpus_df = pd.DataFrame(corpus).set_index('id')
     save(corpus_df, 'corpus_df.pkl')
 
-    
-def vectorize(df, vectorizer=None, max_features=10_000):
-    """Vectorize a dataframe for storage in sparse matrix form"""
-    vectorizer = CountVectorizer(
-        lowercase=False,
-        stop_words=get_stopwords(),
-        max_features=max_features
-    ) if vectorizer is not None else vectorizer
-
-
 def get_stopwords(url = STOPWORDS_URL):
     r = requests.get(STOPWORDS_URL)
     stopwords = []
