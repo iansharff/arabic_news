@@ -4,6 +4,9 @@
 # VS Code
 .vscode/
 
+# Finder
+.DS_Store
+
 # Scratch files
 scratch*.ipynb
 scratch*.py
