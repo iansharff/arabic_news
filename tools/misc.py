@@ -1,4 +1,9 @@
 import pickle
+import requests
+import nltk
+
+PATTERN = r'[\u0621-\u064A]+'
+STOPWORDS_URL = 'https://raw.githubusercontent.com/mohataher/arabic-stop-words/master/list.txt'
 
 def save(obj, filepath):
     """Save an object to a certain filepath"""
@@ -12,3 +17,12 @@ def load(filepath):
     obj = pickle.load(f)
     f.close()
     return obj
+
+def get_stopwords(url = STOPWORDS_URL):
+    r = requests.get(STOPWORDS_URL)
+    stopwords = []
+    if r.status_code:
+        stopwords = r.text.split('\n')
+    else:
+        stopwords = nltk.corpus.stopwords.words('arabic')
+    return stopwords
