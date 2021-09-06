@@ -3,6 +3,7 @@
 
 # VS Code
 .vscode/
+__pycache__
 
 # Finder
 .DS_Store
