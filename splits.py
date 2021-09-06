@@ -1,16 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import os
-import requests
-import pickle
 import pandas as pd
 
-import nltk
-from nltk.tokenize.regexp import RegexpTokenizer
-
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer
-
+from tools import misc
 
 ROOT_PATH = 'raw_data'
 TRAIN_SPLIT = 0.8
@@ -56,20 +49,8 @@ def main():
     print(*[f"{dname}: {len(fnames)}" for dname, fnames in cls_dict.items()], sep='\n\t')
     
     corpus_df = pd.DataFrame(corpus).set_index('id')
-    save(corpus_df, 'corpus_df.pkl')
+    misc.save(corpus_df, 'corpus_df.pkl')
 
-def get_stopwords(url = STOPWORDS_URL):
-    r = requests.get(STOPWORDS_URL)
-    stopwords = []
-    if r.status_code:
-        stopwords = r.text.split('\n')
-    else:
-        stopwords = nltk.corpus.stopwords.words('arabic')
-    return stopwords
-
-def save(obj, filepath):
-    with open(filepath, 'wb') as f:
-        pickle.dump(obj, f)
 
 if __name__ == '__main__':
     main()
