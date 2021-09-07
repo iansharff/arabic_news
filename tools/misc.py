@@ -32,29 +32,3 @@ def load(filepath):
     obj = pickle.load(f)
     f.close()
     return obj
-
-def get_stopwords(url = STOPWORDS_URL):
-    r = requests.get(STOPWORDS_URL)
-    stopwords = []
-    if r.status_code:
-        stopwords = r.text.split('\n')
-    else:
-        stopwords = nltk.corpus.stopwords.words('arabic')
-    return stopwords
-
-def preprocess(X, y, vectorizer):
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y,
-        test_size=TEST_SIZE,
-        random_state=SEED,
-        stratified=y)
-
-    X_train_v = vectorizer.fit_transform(X_train)
-    X_test_v = vectorizer.transform(X_test)
-
-    return X_train_v, X_test_v, y_train, y_test
-
-    
-    
-
-    
