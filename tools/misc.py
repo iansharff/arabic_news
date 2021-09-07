@@ -2,8 +2,23 @@ import pickle
 import requests
 import nltk
 
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.preprocessing import LabelEncoder
+
 PATTERN = r'[\u0621-\u064A]+'
 STOPWORDS_URL = 'https://raw.githubusercontent.com/mohataher/arabic-stop-words/master/list.txt'
+TEST_SIZE = 0.2
+SEED = 123
+CLASSES = {
+    0: 'culture',
+    1: 'finance',
+    2: 'medical',
+    3: 'politics',
+    4: 'religion',
+    5: 'sports',
+    6: 'tech'
+}
 
 def save(obj, filepath):
     """Save an object to a certain filepath"""
@@ -26,3 +41,20 @@ def get_stopwords(url = STOPWORDS_URL):
     else:
         stopwords = nltk.corpus.stopwords.words('arabic')
     return stopwords
+
+def preprocess(X, y, vectorizer):
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y,
+        test_size=TEST_SIZE,
+        random_state=SEED,
+        stratified=y)
+
+    X_train_v = vectorizer.fit_transform(X_train)
+    X_test_v = vectorizer.transform(X_test)
+
+    return X_train_v, X_test_v, y_train, y_test
+
+    
+    
+
+    
