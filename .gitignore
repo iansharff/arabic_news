@@ -14,3 +14,4 @@ scratch*.py
 
 # Data / Large files
 raw_data/
+outputs/models/
