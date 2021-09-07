@@ -32,3 +32,12 @@ def load(filepath):
     obj = pickle.load(f)
     f.close()
     return obj
+
+def get_stopwords(url = STOPWORDS_URL):
+    r = requests.get(STOPWORDS_URL)
+    stopwords = []
+    if r.status_code:
+        stopwords = r.text.split('\n')
+    else:
+        stopwords = nltk.corpus.stopwords.words('arabic')
+    return stopwords
