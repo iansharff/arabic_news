@@ -10,6 +10,7 @@ PATTERN = r'[\u0621-\u064A]+'
 STOPWORDS_URL = 'https://raw.githubusercontent.com/mohataher/arabic-stop-words/master/list.txt'
 TEST_SIZE = 0.2
 SEED = 123
+MAX_FEATURES = 10_000
 CLASSES = {
     0: 'culture',
     1: 'finance',
