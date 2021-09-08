@@ -21,7 +21,6 @@ def main():
     os.chdir(orig_dir)
     
     print("SANAD Class Counts")
-    line()
     print(f"{sum(totals.values())} articles belonging to {len(totals)} classes")
     line()
     for source, cats in source_counts.items():
