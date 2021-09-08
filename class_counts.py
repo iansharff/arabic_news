@@ -10,6 +10,7 @@ def main():
     source_counts = {}
     totals = {}
 
+    print("SANAD Class Counts")
     print('-'*30)
     for source in sources:
         cat_counts = {}
@@ -31,6 +32,8 @@ def main():
     print('-'*30)
     for cat, total in totals.items():
         print(f'\t{cat}: {total}')
+    print()
+    print(f"{sum(totals.values())} articles belonging to {len(totals)} classes")
     
 
 if __name__ == '__main__':
