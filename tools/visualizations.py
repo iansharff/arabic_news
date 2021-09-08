@@ -24,7 +24,7 @@ ANNOT_KWS = {
     'size': 10
 }
 
-def plot_confusion_matrices(model, X_train, X_test, y_train, y_test):
+def plot_confusion_matrices(model, X_train, X_test, y_train, y_test, save_path=None):
     
     y_hat_train = model.predict(X_train)
     y_hat_test = model.predict(X_test)
@@ -53,6 +53,10 @@ def plot_confusion_matrices(model, X_train, X_test, y_train, y_test):
         cbar=False
     )
     ax_test.set_title('Testing', fontdict=AX_KWS)
+    
+    if save_path:
+        plt.savefig(f'{save_path}')
+
     plt.show()
 
 def plot_clusters():
