@@ -53,8 +53,7 @@ def plot_confusion_matrices(model, X_train, X_test, y_train, y_test):
         cbar=False
     )
     ax_test.set_title('Testing', fontdict=AX_KWS)
-
-    return fig
+    plt.show()
 
 def plot_clusters():
     pass
