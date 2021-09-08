@@ -10,8 +10,6 @@ def main():
     source_counts = {}
     totals = {}
 
-    print("SANAD Class Counts")
-    print('-'*30)
     for source in sources:
         cat_counts = {}
         cats = [cat for cat in os.listdir(os.path.join('./sanad_full', source)) if os.path.isdir(cat)]
@@ -22,19 +20,24 @@ def main():
         source_counts[source] = cat_counts
     os.chdir(orig_dir)
     
+    print("SANAD Class Counts")
+    line()
+    print(f"{sum(totals.values())} articles belonging to {len(totals)} classes")
+    line()
     for source, cats in source_counts.items():
         print(source)
-        print('-'*30)
+        line()
         for cat, count in cats.items():
             print(f"\t{cat}: {count}")
-        print('-'*30)
+        line()
     print("TOTALS")
-    print('-'*30)
+    line()
     for cat, total in totals.items():
         print(f'\t{cat}: {total}')
-    print()
-    print(f"{sum(totals.values())} articles belonging to {len(totals)} classes")
-    
+    line()
+
+def line():
+    print('-'*30)
 
 if __name__ == '__main__':
     main()
