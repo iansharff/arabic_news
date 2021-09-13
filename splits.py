@@ -5,7 +5,7 @@ import pandas as pd
 
 from tools import misc
 
-ROOT_PATH = 'raw_data'
+ROOT_PATH = 'raw_data/sanad_subset'
 TRAIN_SPLIT = 0.8
 SEED = 42
 PATTERN = r'[\u0621-\u064A]+'
