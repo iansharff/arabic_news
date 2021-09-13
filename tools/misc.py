@@ -8,7 +8,8 @@ from sklearn.preprocessing import LabelEncoder
 
 PATTERN = r'[\u0621-\u064A]+'
 STOPWORDS_URL = 'https://raw.githubusercontent.com/mohataher/arabic-stop-words/master/list.txt'
-TEST_SIZE = 0.2
+VALIDATION_SPLIT = 0.2
+BATCH_SIZE = 10_000
 SEED = 123
 MAX_FEATURES = 10_000
 CLASSES = {
