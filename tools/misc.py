@@ -12,15 +12,16 @@ VALIDATION_SPLIT = 0.2
 BATCH_SIZE = 10_000
 SEED = 123
 MAX_FEATURES = 10_000
-CLASSES = {
-    0: 'culture',
-    1: 'finance',
-    2: 'medical',
-    3: 'politics',
-    4: 'religion',
-    5: 'sports',
-    6: 'tech'
-}
+
+CLASSES = [
+    'Culture',
+    'Finance',
+    'Medical',
+    'Politics',
+    'Religion',
+    'Sports',
+    'Tech'
+]
 
 def save(obj, filepath):
     """Save an object to a certain filepath"""
