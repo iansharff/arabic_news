@@ -1,0 +1,46 @@
+['Sports', 'Politics', 'Religion', 'Medical', 'Finance', 'Tech', 'Culture']
+['Sports', 'Politics', 'Religion', 'Medical', 'Finance', 'Tech', 'Culture']
+['Sports', 'Politics', 'Religion', 'Medical', 'Finance', 'Tech', 'Culture']
+SANAD Class Counts
+195175 articles belonging to 7 classes
+------------------------------
+Khaleej
+------------------------------
+	Sports: 6500
+	Politics: 6500
+	Religion: 6500
+	Medical: 6500
+	Finance: 6500
+	Tech: 6500
+	Culture: 6500
+------------------------------
+Arabiya
+------------------------------
+	Sports: 23058
+	Politics: 4368
+	Religion: 0
+	Medical: 3715
+	Finance: 30076
+	Tech: 4410
+	Culture: 5619
+------------------------------
+Akhbarona
+------------------------------
+	Sports: 15755
+	Politics: 13979
+	Religion: 7522
+	Medical: 12947
+	Finance: 9280
+	Tech: 12199
+	Culture: 6747
+------------------------------
+TOTALS
+------------------------------
+	Sports: 45313
+	Politics: 24847
+	Religion: 14022
+	Medical: 23162
+	Finance: 45856
+	Tech: 23109
+	Culture: 18866
+------------------------------
