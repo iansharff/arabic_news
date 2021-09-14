@@ -1,10 +1,11 @@
 import os
 import sys
 
+from tools import misc
+
 def main():
-    text_file = open('class_counts.txt', 'wt')
+    text_file = open('outputs/class_counts.txt', 'wt')
     sys.stdout = text_file
-    orig_dir = os.curdir
     os.chdir('./raw_data')
     sources = os.listdir('./sanad_full')
     source_counts = {}
@@ -12,13 +13,15 @@ def main():
 
     for source in sources:
         cat_counts = {}
-        cats = [cat for cat in os.listdir(os.path.join('./sanad_full', source)) if os.path.isdir(cat)]
+        cats = [cat for cat in os.listdir(os.path.join('./sanad_full', source))]
+        print(cats)
         for cat in cats:
             cat_count = len(os.listdir(os.path.join('./sanad_full', source, cat)))
             cat_counts[cat] = cat_count
             totals[cat] = totals.get(cat, 0) + cat_count
         source_counts[source] = cat_counts
-    os.chdir(orig_dir)
+    
+    os.chdir('..')
     
     print("SANAD Class Counts")
     print(f"{sum(totals.values())} articles belonging to {len(totals)} classes")
@@ -34,6 +37,9 @@ def main():
     for cat, total in totals.items():
         print(f'\t{cat}: {total}')
     line()
+
+    misc.save(source_counts, 'outputs/source_counts.pkl')
+    misc.save(totals, 'outputs/class_counts.pkl')
 
 def line():
     print('-'*30)
