@@ -2,16 +2,17 @@
 lines.linewidth: 2.0
 
 ### FONT
-font.weight: 500
 font.family: serif
 font.serif: Computer Modern Roman, DejaVu Serif, Bitstream Vera Serif,  New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
 
 ### AXES
-axes.facecolor: 'whitesmoke'
-axes.edgecolor: slategray
-axes.titlesize: 22
-axes.titleweight: bold
-axes.labelsize: 16
+axes.titlesize: 24
+axes.titleweight: 600
+axes.titlepad: 25.0
+
+axes.labelsize: 18
+axes.labelweight: bold
+axes.labelpad: 20.0
 axes.prop_cycle: cycler('color', ['maroon', 'tomato', 'sandybrown', 'goldenrod', 'olive', 'darkcyan', 'midnightblue', 'rebeccapurple', 'darkmagenta', 'mediumorchid'])
 
 # Spines
@@ -23,4 +24,10 @@ xtick.labelsize: 12
 ytick.labelsize: 12
 
 ### FIGURE
-figure.figsize: 9.6, 7.2
+figure.figsize: 12, 12
+figure.titlesize: 20
+figure.titleweight: bold
+
+### SAVING FIGURES
+savefig.dpi: 150
+savefig.facecolor: white
