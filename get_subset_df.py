@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+"""
+This script produces a DataFrame and stores it as a pickle file to be used for initial model testing. Data needs to be present in repo to use
+"""
 import os
 import pandas as pd
 
