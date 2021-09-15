@@ -22,6 +22,7 @@ def main():
         encoding = 'utf-8',
         strip_accents= 'unicode',
         lowercase=False,
+        max_df=0.5,
         token_pattern = misc.PATTERN
     )
     for i, (text_batch, label_batch) in enumerate(train_ds):
@@ -40,8 +41,14 @@ def main():
     val_texts_cv = count_vectorizer.transform(val_texts)
 
     misc.save(nb_model, 'outputs/models/nb_full_train.pkl')
+    misc.save(nb_model, 'outputs/final_models/nb_full_train.pkl')
+
     misc.save(val_texts_cv, 'outputs/models/val_texts_cv.pkl')
+    misc.save(val_texts_cv, 'outputs/final_models/val_texts_cv.pkl')
+
     misc.save(val_labels, 'outputs/models/val_labels.pkl')
+    misc.save(val_labels, 'outputs/final_models/val_labels.pkl')
+    
     misc.save(count_vectorizer, 'outputs/models/count_vectorizer.pkl')
         
 
@@ -55,11 +62,6 @@ def get_dataset(path, subset, batch_size=misc.BATCH_SIZE):
         validation_split=misc.VALIDATION_SPLIT,
         seed=misc.SEED
     )
-
-
-def model_nb():
-    pass
-
 
 
 if __name__ == '__main__':
