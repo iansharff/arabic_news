@@ -1,3 +1,5 @@
+<img src="images/wordcloud.png">
+
 # Classification of Arabic News Articles
 > Ian Sharff
 
@@ -33,12 +35,14 @@ To improve data quality, the `camel_tools` library engineered by the CAMeL lab a
 ## Data Preparation
 The data were prepared using `sklearn` and `pandas` modules for ease of visualization and model training. The subset corpus was count-vectorized keeping the 10,000 most common words which were then split into training and testing sets. As of now, the Morphological Database from `camel_tools` has not been implemented, but doing so will likely improve model performance and quality. However, the models have all achieved over 95% accuracy on the subset of articles, which is a promising result.
 
+<img src="images/source_counts_presentation.png" alt="Article Source Counts">
+
+<img src="images/class_count_presentation.png" alt="Corpus Class Distribution">
+
 ## Model Training and Evaluation
-The models constructed and their testing accuracies are as follows in order of computational complexity:
-* Naive Bayes: 95.6%
-* Random Forest: 99.1%
-* Gradient Boosting: 0.97%
-* Support Vector: 0.98%
+The first simple models constructed and their testing accuracies are as follows in order of computational complexity:
+
+<img src="images/baseline_scores_presentation.png">
 
 While the Random Forest classifier has performed much better than the others, the Naive Bayes model takes significantly less time to train and is promising due to its compatibility with incremental learning, which would be much more suitable for the filesystem employed in this project. The Naive Bayes and Random Forest confusion matrices are shown below.
 
@@ -46,9 +50,12 @@ While the Random Forest classifier has performed much better than the others, th
 
 <img src="images/rfc_cm.png" alt="Naive Bayes Confusion Matrices">
 
+The final model, trained on the full corpus was a Naive Bayes Classifier that was trained in batches, reaching an accuracy of 93%
+
+<img src="images/final_model_cm_pres.png">
+
 ## Conclusions and Future Work
 The results of this project suggest that a Random Forest Classifier would be highly accurate if trained on the full corpus, but the Naive Bayes model also is promising due to its simplicity. Naive Bayes has historically proven to be very effective with document classification tasks, so this is definitely an area of the project that can be further developed. Other areas to develop are:
 * Using word embeddings to train a neural network model, implemented in `keras`/`tensorflow`/`gensim`
 * Incorporating a morphological database from `camel_tools` to reduce redundancy in corpus vocabulary.
 * Deploying the model as an interactive application, possibly with Docker or Streamlit
-* Carefully tuning hyperparameters to improve model performance.
