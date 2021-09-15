@@ -58,9 +58,3 @@ def plot_confusion_matrices(model, X_train, X_test, y_train, y_test, save_path=N
         plt.savefig(f'{save_path}')
 
     plt.show()
-
-def plot_clusters():
-    pass
-
-def word_map():
-    pass
