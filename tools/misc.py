@@ -1,3 +1,5 @@
+import os
+
 import pickle
 import requests
 import nltk
@@ -44,3 +46,8 @@ def get_stopwords(url = STOPWORDS_URL):
     else:
         stopwords = nltk.corpus.stopwords.words('arabic')
     return stopwords
+
+def get_absolute_paths(directory):
+    for dirpath, _, filenames in os.walk(directory):
+        for filename in filenames:
+            yield os.path.abspath(os.path.join(dirpath, filename))
